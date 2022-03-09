@@ -15,55 +15,38 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
-
 @Entity
-@Table(name = "tb_postagem")
-
-
+@Table(name = "tb_postagens")
 public class Postagem {
-	
-	@ManyToOne
-	@JsonIgnoreProperties("postagem")
-	private Tema tema;
-	
-	
-	public Tema getTema() {
-		return tema;
-	}
-
-	public void setTema(Tema tema) {
-		this.tema = tema;
-	}
-
-	public LocalDateTime getData() {
-		return data;
-	}
-
-	public void setData(LocalDateTime data) {
-		this.data = data;
-	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	
-	@NotBlank
-	@Size(min = 5, max = 100)
+	private Long id;
+
+	@NotBlank(message = "O atributo título é obrigatório!")
+	@Size(min = 2, max = 100, message = "O atributo deve conter no mínimo 5 e no máximo 100 caracteres")
 	private String titulo;
-	
-	@NotBlank
-	@Size(min = 5, max = 500)
+
+	@NotBlank(message = "O atributo texto é obrigatório!")
+	@Size(min = 3, max = 5000, message = "O atributo texto deve conter no mínimo 5 e no máximo 5000 caracteres")
 	private String texto;
-	
+
 	@UpdateTimestamp
 	private LocalDateTime data;
 
-	public long getId() {
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Tema tema;
+
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Usuario usuario;
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -83,8 +66,28 @@ public class Postagem {
 		this.texto = texto;
 	}
 
+	public LocalDateTime getData() {
+		return data;
+	}
 
+	public void setData(LocalDateTime data) {
+		this.data = data;
+	}
 
-	
-	
+	public Tema getTema() {
+		return tema;
+	}
+
+	public void setTema(Tema tema) {
+		this.tema = tema;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 }
