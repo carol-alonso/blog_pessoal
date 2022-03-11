@@ -77,5 +77,3 @@ public class TemaController {
 	}
 	
 }
-
-//tentando atualizar
