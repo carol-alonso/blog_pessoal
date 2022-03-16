@@ -23,7 +23,7 @@ public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	@NotNull(message = "O atributo nome é obrigatório")
 	private String nome;
@@ -58,11 +58,11 @@ public class Usuario {
 	public Usuario() {	}
 
 
-	public long getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -90,14 +90,14 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-    public String getFoto() {
-		return foto;
+	public String getFoto() {
+		return this.foto;
 	}
 
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
-    
+
 	public List<Postagem> getPostagem() {
 		return this.postagem;
 	}

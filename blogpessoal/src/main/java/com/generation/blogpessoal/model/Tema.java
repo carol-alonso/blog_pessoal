@@ -24,20 +24,13 @@ public class Tema {
 	@NotBlank(message = "O atributo é obrigatorio")
 	private String descricao;
 
-	public List<Postagem> getPostagem() {
-		return postagem;
-	}
-
-	public void setPostagem(List<Postagem> postagem) {
-		this.postagem = postagem;
-	}
-
 	@OneToMany(mappedBy = "tema", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("tema")
 	private List<Postagem> postagem;
 
+
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -45,19 +38,20 @@ public class Tema {
 	}
 
 	public String getDescricao() {
-		return descricao;
+		return this.descricao;
 	}
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 
-	public List<Postagem> getPostagens() {
-		return postagem;
+	public List<Postagem> getPostagem() {
+		return this.postagem;
 	}
 
-	public void setPostagens(List<Postagem> postagens) {
-		this.postagem = postagens;
+	public void setPostagem(List<Postagem> postagem) {
+		this.postagem = postagem;
 	}
+
 
 }
